@@ -10,3 +10,15 @@ class ToDoList(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TodoItem(models.Model):
+    task = models.CharField(max_length=100)
+    due_date = models.DateTimeField(null=True, blank=True)
+    is_completed = models.BooleanField(default=False)
+    list = models.ForeignKey(
+        ToDoList, on_delete=models.CASCADE, related_name="items"
+    )
+
+    def __str__(self):
+        return self.task
