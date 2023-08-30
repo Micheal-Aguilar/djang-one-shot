@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from .views import TodoListDeleteView
 
 urlpatterns = [
     path(
@@ -12,8 +11,8 @@ urlpatterns = [
     path("create/", views.create_todo_list, name="todo_list_create"),
     path("<int:id>/edit/", views.todo_list_update, name="todo_list_update"),
     path(
-        "<int:pk>/delete/",
-        TodoListDeleteView.as_view(),
+        "<int:id>/delete/",
+        views.todo_list_delete,
         name="todo_list_delete",
     ),
     path("items/create/", views.todo_item_create, name="todo_item_create"),

@@ -10,10 +10,10 @@
 <body>
     <h1>{{ todolist.name }}</h1>
     <div>
-        <p> <a href="{URL_to_create_todo_list}" class="btn btn-primary">Edit</a></p>
+        <p> <a href="{% url 'todo_list_update' todolist.id  %}" class="btn btn-primary">Edit</a></p>
     </div>
     <div>
-        <a href="{'URL_todo_list_delete' pk=object.pk }">Delete</a>
+        <a href="{% url 'todo_list_delete' todolist.id %}">Delete</a>
     </div>
     <h2>Tasks</h2>
 
