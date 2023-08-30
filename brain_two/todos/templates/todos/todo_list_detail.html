@@ -9,7 +9,9 @@
 
 <body>
     <h1>{{ todolist.name }}</h1>
-
+    <div>
+        <p> <a href="{URL_to_create_todo_list}" class="btn btn-primary">Edit</a></p>
+    </div>
     <h2>Tasks</h2>
     <table>
         <thead>
@@ -23,10 +25,6 @@
             <tr>
                 <td>{{ task.name }}</td>
                 <td>{{ task.due_date }}</td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="2">No tasks found for this list.</td>
             </tr>
             {% endfor %}
         </tbody>
