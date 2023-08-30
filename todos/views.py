@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from todos.forms import TodoListForm, TodoItemForm
-from .models import ToDoList, TodoItem
+from todos.models import ToDoList, TodoItem
 
 
 # Create your views here.
