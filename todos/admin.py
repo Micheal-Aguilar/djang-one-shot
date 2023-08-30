@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import ToDoList, TodoItem
+from .models import TodoList, TodoItem
 
 # Register your models here.
 
 
-class ToDoListAdmin(admin.ModelAdmin):
+class TodoListAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
 
 
-admin.site.register(ToDoList, ToDoListAdmin)
+admin.site.register(TodoList, TodoListAdmin)
 
 
 class TodoItemAdmin(admin.ModelAdmin):

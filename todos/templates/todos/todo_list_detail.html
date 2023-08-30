@@ -8,32 +8,30 @@
 </head>
 
 <body>
-    <h1>{{ todolist.name }}</h1>
-    <div>
-        <p> <a href="{% url 'todo_list_update' todolist.id  %}" class="btn btn-primary">Edit</a></p>
-    </div>
-    <div>
-        <a href="{% url 'todo_list_delete' todolist.id %}">Delete</a>
-    </div>
-    <h2>Tasks</h2>
-
-
-    <table>
-        <thead>
-            <tr>
-                <th>Task</th>
-                <th>Due Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for task in todolist.tasks.all %}
-            <tr>
-                <td>{{ task.name }}</td>
-                <td>{{ task.due_date }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <main>
+        <div>
+            <h1>{{ todolist.name }}</h1>
+            <p> <a href="{% url 'todo_list_update' todolist.id  %}" class="btn btn-primary">Edit</a></p>
+            <p><a href="{% url 'todo_list_delete' todolist.id %}">Delete</a></p>
+            <h2>Tasks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in todolist.items.all %}
+                    <tr>
+                        <td>{{ task.task }}</td>
+                        <td>{{task.due_date | date:'F j, Y'}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 
 </html>

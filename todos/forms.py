@@ -1,10 +1,10 @@
 from django.forms import ModelForm
-from todos.models import ToDoList, TodoItem
+from todos.models import TodoList, TodoItem
 
 
 class TodoListForm(ModelForm):
     class Meta:
-        model = ToDoList
+        model = TodoList
         fields = ("name",)
 
 

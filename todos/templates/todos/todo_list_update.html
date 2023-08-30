@@ -13,7 +13,6 @@
   <main>
     <div>
       <h1>Update list</h1>
-      <p><a href="{ url 'todo_list_detail' id=todo_list.id }">Edit</a></p>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
