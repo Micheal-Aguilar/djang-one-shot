@@ -16,4 +16,5 @@ urlpatterns = [
         TodoListDeleteView.as_view(),
         name="todo_list_delete",
     ),
+    path('items/create/', views.todo_item_create, name='todo_item_create'),
 ]

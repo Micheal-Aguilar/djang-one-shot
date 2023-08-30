@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from todos.models import ToDoList
+from todos.models import ToDoList, TodoItem
 
 
 class TodoListForm(ModelForm):
@@ -8,12 +8,12 @@ class TodoListForm(ModelForm):
         fields = ("name",)
 
 
-# class TodoItemForm(ModelForm):
-#     class Meta:
-#         model = TodoItem
-#         fields = (
-#             "task",
-#             "due_date",
-#             "is_completed",
-#             "list",
-#         )
+class TodoItemForm(ModelForm):
+    class Meta:
+        model = TodoItem
+        fields = (
+            "task",
+            "due_date",
+            "is_completed",
+            "list",
+        )

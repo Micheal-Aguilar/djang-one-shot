@@ -3,6 +3,7 @@ from todos.forms import TodoListForm
 from .models import ToDoList
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView
+from .forms import TodoItemForm
 
 
 # Create your views here.
@@ -53,3 +54,14 @@ class TodoListDeleteView(DeleteView):
     model = ToDoList
     template_name = "todos/todo_list_delete.html"
     success_url = reverse_lazy("todo_list_list")
+
+
+def todo_item_create(request):
+    if request.method == "POST":
+        form = TodoItemForm(request.POST)
+        if form.is_valid():
+            todo_item = form.save()
+            return redirect("todo_list_detail", id=todo_item.list.id)
+    else:
+        form = TodoItemForm()
+    return render(request, "todos/todo_item_create_form.html", {"form": form})
