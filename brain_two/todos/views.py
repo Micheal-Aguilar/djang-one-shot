@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from todos.forms import TodoListForm
-from .models import ToDoList
+from todos.forms import TodoListForm, TodoItemForm
+from .models import ToDoList, TodoItem
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView
-from .forms import TodoItemForm
 
 
 # Create your views here.
@@ -65,3 +64,22 @@ def todo_item_create(request):
     else:
         form = TodoItemForm()
     return render(request, "todos/todo_item_create_form.html", {"form": form})
+
+
+def todo_item_update(request, id):
+    todo_item = get_object_or_404(TodoItem, id=id)
+
+    if request.method == "POST":
+        form = TodoItemForm(request.POST, instance=todo_item)
+        if form.is_valid():
+            form.save()
+            # Redirect to the detail page of the associated to-do list
+            return redirect("todo_list_detail", id=todo_item.list.id)
+    else:
+        form = TodoItemForm(instance=todo_item)
+
+    return render(
+        request,
+        "todos/todo_item_update.html",
+        {"form": form, "todo_item": todo_item},
+    )
